@@ -1,0 +1,2 @@
+INSERT INTO onlineTicket.bus (bus_no, services, bus_type_bus_type) VALUES (123, 'ac,cooler,toilet,wifi', 'articulated');
+INSERT INTO onlineTicket.bus (bus_no, services, bus_type_bus_type) VALUES (124, 'ac,cooler,toilet,wifi', 'articulated');

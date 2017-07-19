@@ -1,0 +1,1 @@
+INSERT INTO onlineTicket.bus_seat_list (bus_bus_no, seat_list_seat_id) VALUES (124, 'seat101');

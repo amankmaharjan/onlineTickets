@@ -1,0 +1,83 @@
+<div>
+  <table>
+    <tr>
+      <td>Bus no:</td>
+      <td><input type="text" [(ngModel)]="bus.busNo"/></td>
+    </tr>
+    <tr>
+      <td>Bus name:</td>
+      <td><input type="text" [(ngModel)]="bus.busName"/></td>
+    </tr>
+    <tr>
+      <td>Departure Time:</td>
+      <td><input type="time" [(ngModel)]="bus.departureTime"></td>
+    </tr>
+    <tr>
+      <td>
+        Sevices:
+      </td>
+      <td>
+        <input type="text" [(ngModel)]="bus.services">
+      </td>
+    </tr>
+    <tr>
+      <td>
+        seats:
+      </td>
+      <td>
+      </td>
+    </tr>
+    <tr>
+      <td>routes:
+      </td>
+      <td>
+        <select [(ngModel)]="bus.route">
+          <option *ngFor="let route of routeList" [ngValue]="route">{{route.source}}-{{route.destination}}</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>bus type:</td>
+      <td>
+      <select [(ngModel)]="bus.busType">
+        <option *ngFor="let busType of busTypeList" [ngValue]="busType">{{busType.type}}</option>
+      </select>
+      </td>
+    </tr>
+    <button (click)="createBus()">Add</button>
+  </table>
+
+  <br>
+</div>
+
+<table border="1">
+  <thead>
+  <tr>
+    <th>bus no</th>
+    <th>name</th>
+    <th>type</th>
+    <th>services</th>
+    <th>departure-time</th>
+    <th>seats</th>
+    <th>route</th>
+    <th>options</th>
+
+  </tr>
+  </thead>
+  <tbody *ngFor="let bus of busList">
+  <tr>
+    <td>{{bus.busNo}}</td>
+    <td>{{bus.busName}}</td>
+    <td>{{bus.busType.type}}</td>
+    <td>{{bus.services}}</td>
+    <td>{{bus.departureTime}}</td>
+    <td></td>
+    <td>{{bus.route.source}}-{{bus.route.destination}}</td>
+    <td>
+      <button (click)="goDetail(bus)">select</button>
+      <button (click)="deleteBus(bus); $event.stopPropagation()">delete</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+

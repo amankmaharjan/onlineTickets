@@ -1,0 +1,35 @@
+<div>
+  BusType: <input type="text" [(ngModel)]="busType.type">
+  <button (click)="createBusType()">add</button>
+
+</div>
+
+<table border="1">
+  <thead>
+  <tr>
+    <th>id</th>
+    <th>type</th>
+    <th>options</th>
+  </tr>
+  </thead>
+  <tbody *ngFor="let busType of busTypeList">
+  <tr>
+    <td>{{busType.id}}</td>
+    <td>{{busType.type}}</td>
+    <td>
+      <button (click)="goDetail(busType)">select</button>
+      <button (click)="deleteBusType(busType); $event.stopPropagation()">delete</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+<div *ngIf="selectedBusType">
+  <h3>id:{{selectedBusType.id}}</h3>
+  <h3>type:{{selectedBusType.type}}</h3>
+  <div *ngIf="edit">
+    <input type="text" [value]="selectedBusType.type" #updatedBusType>
+    <button (click)="cancel()">cancel</button>
+    <button (click)="updateBusType(updatedBusType.value)">update</button>
+  </div>
+  <button (click)="showEdit()" *ngIf="!edit">edit</button>
+</div>

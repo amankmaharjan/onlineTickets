@@ -1,0 +1,42 @@
+<div>
+  <h2>source:</h2>
+  <input type="text" [(ngModel)]="route.source">
+  <h2>destination:</h2>
+  <input type="text" [(ngModel)]="route.destination"><br><br>
+  <button (click)="searchBus()">search</button>
+</div>
+<div>
+  <table>
+    <thead>
+    <tr>
+      <th>bus no</th>
+      <th>name</th>
+      <th>type</th>
+      <th>services</th>
+      <th>departure-time</th>
+      <th>seats</th>
+      <th>route</th>
+      <th>fare</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody *ngFor="let bus of busList">
+    <tr>
+      <td>{{bus.busNo}}</td>
+      <td>{{bus.busName}}</td>
+      <td>{{bus.busType.type}}</td>
+      <td>{{bus.services}}</td>
+      <td>{{bus.departureTime}}</td>
+      <td></td>
+      <td>{{bus.route.source}}-{{bus.route.destination}}</td>
+      <td></td>
+      <td>
+        <a [routerLink]="['/detail/', bus.busNo]">view details</a>
+      </td>
+    <tr>
+    </tbody>
+  </table>
+
+</div>
+
+

@@ -1,0 +1,42 @@
+<div *ngIf="bus">
+<table>
+  <tbody>
+  <tr>
+    <td>
+      busno:
+    </td>
+    <td>{{bus.busNo}}</td>
+  </tr>
+  <tr>
+    <td>
+      name:
+    </td>
+    <td>
+      {{bus.busName}}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      type:
+    </td>
+    <td>
+      {{bus.busType.type}}
+    </td>
+  </tr>
+  <tr>
+    <td>services</td>
+    <td>{{bus.services}}</td>
+  </tr>
+  <tr>
+    <td>departure time</td>
+    <td>{{bus.departureTime}}</td>
+  </tr>
+  <tr>
+    <td>route</td>
+    <td>{{bus.route.source}}-{{bus.route.destination}}</td>
+  </tr>
+  </tbody>
+</table>
+</div>
+Available seats:
+

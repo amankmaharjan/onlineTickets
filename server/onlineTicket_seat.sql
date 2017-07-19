@@ -1,0 +1,1 @@
+INSERT INTO onlineTicket.seat (seat_id, seat_name, status) VALUES ('seat101', 'A1', false);

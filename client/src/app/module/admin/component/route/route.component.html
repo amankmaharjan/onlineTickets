@@ -1,0 +1,36 @@
+<div>
+  <table>
+    <tr>
+      <td>Source:</td>
+      <td><input type="text" [(ngModel)]="route.source"></td>
+    </tr>
+    <tr>
+      <td>Destination:</td>
+      <td><input type="text" [(ngModel)]="route.destination"></td>
+    </tr>
+    <button (click)="createRoute()">Add</button>
+  </table>
+</div>
+<table border="1">
+  <thead>
+  <tr>
+    <th>routeId:</th>
+    <th>source</th>
+    <th>destination</th>
+    <th>options</th>
+  </tr>
+  </thead>
+  <tbody *ngFor="let route of routeList">
+  <tr>
+    <td>{{route.routeId}}</td>
+    <td>{{route.source}}</td>
+    <td>{{route.destination}}</td>
+    <td>
+      <button (click)="goDetail(route)">select</button>
+      <button (click)="deleteRoute(route); $event.stopPropagation()">delete</button>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
+
