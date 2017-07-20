@@ -5,10 +5,14 @@ import {Route} from "@angular/router";
 import {BusService} from "../../../../services/bus.service";
 import {BusTypeService} from "../../../../services/bus.type.service";
 import {RouteService} from "../../../../services/route.service";
+import {Seat} from "../../../../model/seat";
+import {forEach} from "@angular/router/src/utils/collection";
 
 @Component({
   selector: 'app-bus',
-  templateUrl: './bus.component.html'
+  templateUrl: './bus.component.html',
+  styleUrls: ['./bus.component.css']
+
 })
 export class BusComponent implements OnInit {
 
@@ -18,15 +22,28 @@ export class BusComponent implements OnInit {
   updatedBusType: Bus;
   busTypeList: BusType[];
   routeList: Route[];
+  seatsArray: Number[][];
+  selectedSeatMapValue: string;
 
-
-  constructor(private busService: BusService, private busTypeService: BusTypeService,private  routeService:RouteService) {
+  constructor(private busService: BusService, private busTypeService: BusTypeService, private  routeService: RouteService) {
   }
 
   ngOnInit(): void {
-    this.setBusTypesList();
+    this.setBusTypesList()
     this.setBuses();
     this.setRouteList();
+    this.initialiseSeatArray();
+  }
+
+  initialiseSeatArray(): void {
+    this.seatsArray = [];
+    for (var i: number = 0; i < this.bus.seatRow; i++) {
+      this.seatsArray[i] = [];
+      for (var j: number = 0; j < this.bus.seatColumn; j++) {
+        this.seatsArray[i][j] = 10;
+      }
+    }
+
   }
 
   createBus(): void {
@@ -69,4 +86,28 @@ export class BusComponent implements OnInit {
     this.routeService.getRoutesList().then(routeList => this.routeList = routeList);
   }
 
+  openDialog(x: number, y: number): void {
+    console.log(this.selectedSeatMapValue = x.toString() + y.toString());
+
+  }
+
+  addSeat(seatName: string): void {
+    var seat = new Seat();
+    seat.seatName = seatName;
+    seat.seatMapValue = this.selectedSeatMapValue;
+    this.bus.seatList.push(seat);
+    console.log(this.bus.seatList);
+  }
+
+  seatListName(seatList: Seat[]): string {
+    var seatListName: string = "{";
+    for (var i: number = 0; i < seatList.length; i++) {
+      seatListName += seatList[i].seatName;
+      if (i != seatList.length - 1) {
+        seatListName += ',';
+      }
+    }
+    seatListName += "}";
+    return seatListName;
+  }
 }

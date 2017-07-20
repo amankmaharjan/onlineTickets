@@ -21,13 +21,6 @@
       </td>
     </tr>
     <tr>
-      <td>
-        seats:
-      </td>
-      <td>
-      </td>
-    </tr>
-    <tr>
       <td>routes:
       </td>
       <td>
@@ -39,17 +32,38 @@
     <tr>
       <td>bus type:</td>
       <td>
-      <select [(ngModel)]="bus.busType">
-        <option *ngFor="let busType of busTypeList" [ngValue]="busType">{{busType.type}}</option>
-      </select>
+        <select [(ngModel)]="bus.busType">
+          <option *ngFor="let busType of busTypeList" [ngValue]="busType">{{busType.type}}</option>
+        </select>
       </td>
     </tr>
-    <button (click)="createBus()">Add</button>
   </table>
+  seats:<br>
+  row:<input type="number" [(ngModel)]="bus.seatRow" (ngModelChange)="initialiseSeatArray()" min="1" max="6"><br>
 
-  <br>
+  coloumn:<input type="number" [(ngModel)]="bus.seatColumn" (ngModelChange)="initialiseSeatArray()" min="1" max="10">
+  <table class="seat">
+    <thead></thead>
+    <tbody>
+    <tr *ngFor="let a of seatsArray; let x = index">
+      <td *ngFor="let b of a;let y = index">
+        <h1><a (click)="openDialog(x,y)" [class.selected]="(x.toString()+y.toString()) === selectedSeatMapValue">{{x}}{{y}}</a>
+        </h1>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <!--seat--detail-->
+  <div *ngIf="selectedSeatMapValue">
+    <label>selected seat map:{{selectedSeatMapValue}}</label><br>
+    seat name:<input type="text" #seatname><br>
+    <button (click)="addSeat(seatname.value)">add seat</button>
+    <button>cancel</button>
+  </div>
+  <button (click)="createBus()">Add</button>
 </div>
 
+<!--bus-table-->
 <table border="1">
   <thead>
   <tr>
@@ -71,7 +85,11 @@
     <td>{{bus.busType.type}}</td>
     <td>{{bus.services}}</td>
     <td>{{bus.departureTime}}</td>
-    <td></td>
+    <td>
+      <ng-container *ngFor="let seat of bus.seatList">
+        {{seat.seatName}},
+      </ng-container>
+    </td>
     <td>{{bus.route.source}}-{{bus.route.destination}}</td>
     <td>
       <button (click)="goDetail(bus)">select</button>
