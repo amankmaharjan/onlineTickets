@@ -42,20 +42,32 @@
   row:<input type="number" [(ngModel)]="bus.seatRow" (ngModelChange)="initialiseSeatArray()" min="1" max="6"><br>
 
   coloumn:<input type="number" [(ngModel)]="bus.seatColumn" (ngModelChange)="initialiseSeatArray()" min="1" max="10">
+  <!--seats layout-->
   <table class="seat">
     <thead></thead>
     <tbody>
     <tr *ngFor="let a of seatsArray; let x = index">
-      <td *ngFor="let b of a;let y = index">
-        <h1><a (click)="openDialog(x,y)" [class.selected]="(x.toString()+y.toString()) === selectedSeatMapValue">{{x}}{{y}}</a>
-        </h1>
+      <td *ngFor="let b of a;let y = index" (click)="openDialog(x,y)"
+          [class.selected]="x===selectedSeatMapValueX && y== selectedSeatMapValueY">
+        <h6><a>
+          <div class="sterring-box" *ngIf="x===0&&y===0">
+            <img src="assets/steering.png"/>
+          </div>
+          <ng-container *ngFor="let seat of bus.seatList">
+            <ng-container *ngIf="seat.seatMapValueX==x && seat.seatMapValueY==y">
+              {{seat.seatName}}<img src="assets/seat.png"/>
+            </ng-container>
+          </ng-container>
+        </a>
+
+        </h6>
       </td>
     </tr>
     </tbody>
   </table>
   <!--seat--detail-->
-  <div *ngIf="selectedSeatMapValue">
-    <label>selected seat map:{{selectedSeatMapValue}}</label><br>
+  <div *ngIf="selectedSeatMapValueX   || selectedSeatMapValueY">
+    <label>selected seat map:{{selectedSeatMapValueX+""+selectedSeatMapValueY}}</label><br>
     seat name:<input type="text" #seatname><br>
     <button (click)="addSeat(seatname.value)">add seat</button>
     <button>cancel</button>
@@ -64,38 +76,43 @@
 </div>
 
 <!--bus-table-->
-<table border="1">
-  <thead>
-  <tr>
-    <th>bus no</th>
-    <th>name</th>
-    <th>type</th>
-    <th>services</th>
-    <th>departure-time</th>
-    <th>seats</th>
-    <th>route</th>
-    <th>options</th>
+<div [ngGrid]="{'resizeable': false, 'margins': [5, 10]}">
 
-  </tr>
-  </thead>
-  <tbody *ngFor="let bus of busList">
-  <tr>
-    <td>{{bus.busNo}}</td>
-    <td>{{bus.busName}}</td>
-    <td>{{bus.busType.type}}</td>
-    <td>{{bus.services}}</td>
-    <td>{{bus.departureTime}}</td>
-    <td>
-      <ng-container *ngFor="let seat of bus.seatList">
-        {{seat.seatName}},
-      </ng-container>
-    </td>
-    <td>{{bus.route.source}}-{{bus.route.destination}}</td>
-    <td>
-      <button (click)="goDetail(bus)">select</button>
-      <button (click)="deleteBus(bus); $event.stopPropagation()">delete</button>
-    </td>
-  </tr>
-  </tbody>
-</table>
+
+  <table border="1">
+    <thead>
+    <tr>
+      <th>bus no</th>
+      <th>name</th>
+      <th>type</th>
+      <th>services</th>
+      <th>departure-time</th>
+      <th>seats</th>
+      <th>route</th>
+      <th>options</th>
+
+    </tr>
+    </thead>
+
+    <tbody *ngFor="let bus of busList">
+    <tr>
+      <td>{{bus.busNo}}</td>
+      <td>{{bus.busName}}</td>
+      <td>{{bus.busType.type}}</td>
+      <td>{{bus.services}}</td>
+      <td>{{bus.departureTime}}</td>
+      <td>
+        <ng-container *ngFor="let seat of bus.seatList">
+          {{seat.seatName}},
+        </ng-container>
+      </td>
+      <td>{{bus.route.source}}-{{bus.route.destination}}</td>
+      <td>
+        <a [routerLink]="['/detail/', bus.busNo]">view details</a>
+        <button (click)="deleteBus(bus); $event.stopPropagation()">delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
 

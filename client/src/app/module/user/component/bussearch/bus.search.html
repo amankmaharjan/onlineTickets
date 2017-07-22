@@ -27,7 +27,11 @@
       <td>{{bus.busType.type}}</td>
       <td>{{bus.services}}</td>
       <td>{{bus.departureTime}}</td>
-      <td></td>
+      <td>
+        <ng-container *ngFor="let seat of bus.seatList">
+          {{seat.seatName}},
+        </ng-container>
+      </td>
       <td>{{bus.route.source}}-{{bus.route.destination}}</td>
       <td></td>
       <td>

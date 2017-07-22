@@ -2,5 +2,6 @@ export class Seat {
   seatId: string;
   seatName: string;
   status: boolean;
-  seatMapValue: string;
+  seatMapValueX:number;
+  seatMapValueY:number;
 }

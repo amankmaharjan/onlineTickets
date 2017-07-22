@@ -1,42 +1,100 @@
 <div *ngIf="bus">
-<table>
-  <tbody>
-  <tr>
-    <td>
-      busno:
-    </td>
-    <td>{{bus.busNo}}</td>
-  </tr>
-  <tr>
-    <td>
-      name:
-    </td>
-    <td>
-      {{bus.busName}}
-    </td>
-  </tr>
-  <tr>
-    <td>
-      type:
-    </td>
-    <td>
-      {{bus.busType.type}}
-    </td>
-  </tr>
-  <tr>
-    <td>services</td>
-    <td>{{bus.services}}</td>
-  </tr>
-  <tr>
-    <td>departure time</td>
-    <td>{{bus.departureTime}}</td>
-  </tr>
-  <tr>
-    <td>route</td>
-    <td>{{bus.route.source}}-{{bus.route.destination}}</td>
-  </tr>
-  </tbody>
-</table>
-</div>
-Available seats:
+  <table>
+    <tbody>
+    <tr>
+      <td>
+        busno:
+      </td>
+      <td>{{bus.busNo}}</td>
+    </tr>
+    <tr>
+      <td>
+        name:
+      </td>
+      <td>
+        {{bus.busName}}
+      </td>
+    </tr>
+    <tr>
+      <td>
+        type:
+      </td>
+      <td>
+        {{bus.busType.type}}
+      </td>
+    </tr>
+    <tr>
+      <td>services</td>
+      <td>{{bus.services}}</td>
+    </tr>
+    <tr>
+      <td>departure time</td>
+      <td>{{bus.departureTime}}</td>
+    </tr>
+    <tr>
+      <td>route</td>
+      <td>{{bus.route.source}}-{{bus.route.destination}}</td>
+    </tr>
+    </tbody>
+  </table>
 
+  Available seats:
+  <table class="seat">
+    <thead></thead>
+    <tbody>
+    <tr *ngFor="let a of seatsArray; let x = index">
+      <td *ngFor="let b of a;let y = index" >
+        <h6><a>
+          <div class="sterring-box" *ngIf="x===0&&y===0" (click)="open()">
+            <img src="assets/steering.png"/>
+          </div>
+          <div *ngFor="let seat of bus.seatList" class="availableSeat" [class.reservedSeat]="seat.status"
+               [class.selected]="" (click)="selectSeat(seat)">
+            <ng-container *ngIf="seat.seatMapValueX==x && seat.seatMapValueY==y" >
+              {{seat.seatName}}<img src="assets/seat.png"/>
+            </ng-container>
+            <!--{{seat.seatMapValueX+""+seat.seatMapValueY}}-->
+          </div>
+        </a>
+        </h6>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div>
+  Seats Index:
+  <table>
+    <tbody>
+    <tr>
+      <td>selected seat:</td>
+      <td class="selectedSeat"><img src="assets/seat.png"/></td>
+    </tr>
+    <tr>
+      <td>booked seat:</td>
+      <td class="reservedSeat"><img src="assets/seat.png"/></td>
+    </tr>
+    <tr>
+      <td>available seat:</td>
+      <td class="availableSeat"><img src="assets/seat.png"/></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<div>
+  <label>Fare:</label>
+  <table>
+    <tbody>
+    <tr>
+      <td>Seat(s):
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Amount:</td>
+      <td>Rs:</td>
+    </tr>
+    </tbody>
+  </table>
+  <button>Book</button>
+</div>

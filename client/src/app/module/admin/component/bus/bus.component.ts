@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {Bus} from "../../../../model/bus";
 import {BusType} from "../../../../model/bus.type";
 import {Route} from "@angular/router";
@@ -23,7 +23,8 @@ export class BusComponent implements OnInit {
   busTypeList: BusType[];
   routeList: Route[];
   seatsArray: Number[][];
-  selectedSeatMapValue: string;
+  selectedSeatMapValueX: number;
+  selectedSeatMapValueY: number;
 
   constructor(private busService: BusService, private busTypeService: BusTypeService, private  routeService: RouteService) {
   }
@@ -33,7 +34,7 @@ export class BusComponent implements OnInit {
     this.setBuses();
     this.setRouteList();
     this.initialiseSeatArray();
-  }
+  };
 
   initialiseSeatArray(): void {
     this.seatsArray = [];
@@ -87,16 +88,20 @@ export class BusComponent implements OnInit {
   }
 
   openDialog(x: number, y: number): void {
-    console.log(this.selectedSeatMapValue = x.toString() + y.toString());
+    this.selectedSeatMapValueX = x;
+    this.selectedSeatMapValueY = y;
 
   }
 
   addSeat(seatName: string): void {
     var seat = new Seat();
     seat.seatName = seatName;
-    seat.seatMapValue = this.selectedSeatMapValue;
+    seat.seatMapValueX = this.selectedSeatMapValueX;
+    seat.seatMapValueY = this.selectedSeatMapValueY;
     this.bus.seatList.push(seat);
     console.log(this.bus.seatList);
+
+
   }
 
   seatListName(seatList: Seat[]): string {

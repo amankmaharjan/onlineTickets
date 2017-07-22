@@ -1,0 +1,28 @@
+img {
+  width: 30px;
+  height:30px;
+}
+
+.sterring-box{
+  width:0px;
+}
+table td
+{
+  table-layout:fixed;
+  width:40px;
+  height: 20px;
+  word-wrap:break-word;
+}
+
+.selectedSeat{
+  background-color: yellow;
+}
+.availableSeat{
+  background-color: lime;
+}
+.reservedSeat{
+  background-color: darkcyan;
+}
+a:hover {
+  color: red;
+}
