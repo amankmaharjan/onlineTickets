@@ -1,9 +1,11 @@
 import {Component, Input, OnInit} from "@angular/core";
 import {Bus} from "../../../../model/bus";
-import {ActivatedRoute, ParamMap} from "@angular/router";
+import {ActivatedRoute, ParamMap, Router} from "@angular/router";
 import {BusService} from "../../../../services/bus.service";
 import 'rxjs/add/operator/switchMap';
 import {Seat} from "../../../../model/seat";
+import {Reservation} from "../../../../model/reservation";
+import {ReservationData} from "../../../../services/reservation.data";
 
 
 @Component({
@@ -15,11 +17,13 @@ import {Seat} from "../../../../model/seat";
 export class BusDetailComponent implements OnInit {
   @Input() bus: Bus;
   seatsArray: Number[][];
-  selectedSeat:Seat[]=[];
-
+  selectedSeatList: Seat[] = [];
+  reservation: Reservation = new Reservation();
 
   constructor(private busService: BusService,
-              private route: ActivatedRoute,) {
+              private route: ActivatedRoute,
+              private router: Router,
+              private  reservationData: ReservationData) {
   }
 
   ngOnInit(): void {
@@ -42,11 +46,21 @@ export class BusDetailComponent implements OnInit {
     }
 
   }
-  selectSeat(seat: Seat):void{
+
+  selectSeat(seat: Seat): void {
+    seat.selected = true;
     console.log(seat.seatName)
     console.log(seat.seatId);
-   this.selectedSeat.push(seat);
-
+    this.selectedSeatList.push(seat);
   }
+
+  continueBook(): void {
+    this.reservation.bus = this.bus;
+    this.reservation.seatList = this.selectedSeatList;
+    this.reservationData.storage = this.reservation;
+    let link = ['/passengerForm'];
+    this.router.navigate(link);
+  }
+
 
 }

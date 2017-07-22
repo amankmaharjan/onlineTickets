@@ -49,7 +49,17 @@ public class Bus {
 
     @Getter
     @Setter
-    @OneToMany(cascade = CascadeType.PERSIST)
+    private
+    @Column(name = "seatRow")
+    Integer seatRow;
+    @Getter
+    @Setter
+    private
+    @Column(name = "seatColumn")
+    Integer seatColumn;
+    @Getter
+    @Setter
+    @OneToMany(cascade = CascadeType.ALL)
     private
     List<Seat> seatList;
 

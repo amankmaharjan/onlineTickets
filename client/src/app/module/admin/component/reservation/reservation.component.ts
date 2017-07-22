@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-reservation',
-  template: 'resevtion',
+  templateUrl: 'reservation.component.html',
 })
 export class ReservationComponent {
 }

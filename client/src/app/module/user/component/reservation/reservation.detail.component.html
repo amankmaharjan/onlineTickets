@@ -1,0 +1,32 @@
+Rservation Details:
+<div *ngIf="reservation">
+  <label>date:</label><br>
+  <label>ticketId:{{reservation.tickedId}}</label><br>
+  <label>bus no:{{reservation.bus.busNo}}</label><br>
+  <label>services:{{reservation.bus.services}}</label>
+  <label>bus name:{{reservation.bus.busName}}</label>
+  <label>bus type:{{reservation.bus.busType}}</label>
+  <label>departure time:{{reservation.bus.departureTime}}</label><br>
+  <label>boarding point:{{reservation.passenger.boardingPoint}}</label><br>
+  <label>seats:
+    <ng-container *ngFor="let seat of reservation.seatList">{{seat.seatName}}</ng-container>
+  </label>
+  <label>source:{{reservation.bus.route.source}}</label><br>
+  <label>destination:{{reservation.bus.route.destination}}</label><br>
+  <label>fare:{{reservation.fare}}</label><br>
+  <label>status:</label>
+  <label>Passenger-Details:</label><br>
+  <label>id:{{passenger.passengerId}}</label>
+  <label>name:{{reservation.passenger.name}}</label><br>
+  <label>sex:{{reservation.passenger.gender}}</label>
+  <label>address:{{reservation.passenger.address}}</label><br>
+  <label>mobile:{{reservation.passenger.mobileNo}}</label><br>
+  <label>email:{{reservation.passenger.email}}</label><br>
+
+  <button>print</button>
+  <button>send sms</button>
+  <button>email</button>
+  <button>all</button>
+
+</div>
+

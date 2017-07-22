@@ -26,12 +26,6 @@ public class Reservation {
     private
     String tickedId;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @Getter
-    @Setter
-    private
-    Route route;
-
     @Getter
     @Setter
     @ManyToOne(cascade = CascadeType.ALL)

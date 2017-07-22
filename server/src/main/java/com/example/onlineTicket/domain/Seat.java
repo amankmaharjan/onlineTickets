@@ -36,4 +36,25 @@ public class Seat {
     @Column(name = "status")
     private
     Boolean status;
+
+    @Getter
+    @Setter
+    @Column(name = "selected")
+    private
+    Boolean selected=false;
+
+    @Getter
+    @Setter
+    private
+    @Column(name = "seatMapValueX")
+    Integer seatMapValueX;
+
+    @Getter
+    @Setter
+    private
+    @Column(name = "seatMapValueY")
+    Integer seatMapValueY;
+
+
+
 }

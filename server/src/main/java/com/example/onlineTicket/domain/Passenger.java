@@ -33,13 +33,32 @@ public class Passenger {
 
     @Getter
     @Setter
+    @Column(name = "address")
+    private
+    String address;
+
+    @Getter
+    @Setter
     @Column(name = "gender")
     private
     Boolean gender;
 
-    @OneToOne(cascade = CascadeType.ALL)
     @Getter
     @Setter
+    @Column(name = "mobile_no")
     private
-    Contact contact;
+    Integer mobileNo;
+
+
+    @Getter
+    @Setter
+    @Column(name = "email")
+    private
+    String email;
+
+    @Getter
+    @Setter
+    @Column(name = "boarding_point")
+    private
+    String boardingPoint;
 }

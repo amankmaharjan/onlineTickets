@@ -1,0 +1,23 @@
+passenger details:
+<div *ngIf="passenger">
+  <label>name:</label>
+  <input type="text" [(ngModel)]="passenger.name"><br>
+  <label>address:</label>
+  <input type="text" [(ngModel)]="passenger.address"><br>
+  <label>mobile:</label>
+  <input type="number" [(ngModel)]="passenger.mobileNo"><br>
+  <label>email:</label>
+  <input type="email" [(ngModel)]="passenger.email"><br>
+  sex:
+  <input type="radio" name="sex" [(ngModel)]="passenger.gender">M
+  <input type="radio" name="sex" [(ngModel)]="passenger.gender">F
+  <br>
+  <label>boarding point:</label>
+  <select [(ngModel)]="passenger.boardingPoint">
+    <option>kathmandu</option>
+    <option>pokhara</option>
+    <option>bhaktapur</option>
+  </select>
+  <br>
+  <button (click)=" book()">Book</button>
+</div>
