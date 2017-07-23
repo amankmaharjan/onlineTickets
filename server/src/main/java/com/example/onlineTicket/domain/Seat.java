@@ -35,7 +35,7 @@ public class Seat {
     @Setter
     @Column(name = "status")
     private
-    Boolean status;
+    Boolean status=false;
 
     @Getter
     @Setter

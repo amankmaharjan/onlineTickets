@@ -12,11 +12,11 @@ export class ReservationService {
   constructor(private http: Http) {
   }
 
-  createReservation(reservation: Reservation): Promise<void> {
+  createReservation(reservation: Reservation): Promise<Reservation> {
     return this.http
       .post(this.apiUrl, reservation, {headers: this.headers})
       .toPromise()
-      .then(res => console.log(res))
+      .then(res =>res.json() as Reservation)
       .catch(this.handleError);
 
   }
