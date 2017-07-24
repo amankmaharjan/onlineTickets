@@ -1,11 +1,97 @@
-<div>
-  <h2>source:</h2>
-  <input type="text" [(ngModel)]="route.source">
-  <h2>destination:</h2>
-  <input type="text" [(ngModel)]="route.destination"><br><br>
-  <button (click)="searchBus()">search</button>
+<!--<md-card class="example-card">-->
+<!--<img md-card-image src="assets/bus.png">-->
+<!--<md-card-actions>-->
+<!--<button md-button>LIKE</button>-->
+<!--<button md-button>SHARE</button>-->
+<!--</md-card-actions>-->
+<!--</md-card>-->
+
+<div class="container">
+  <div class="row">
+    <div style="background:url('assets/bus.png')no-repeat center; height:400px; margin:auto;">
+      <div class="starter-template">
+        <table>
+          <tr>
+            <td>
+              <md-input-container class="example-full-width">
+                <input mdInput placeholder="Source">
+              </md-input-container>
+            </td>
+            <md-input-container class="example-full-width">
+              <input mdInput placeholder="Destination">
+            </md-input-container>
+            <td>
+              <button md-fab>
+                <md-icon>search</md-icon>
+              </button>
+            </td>
+          </tr>
+        </table>
+        <br>
+      </div>
+    </div>
+  </div>
 </div>
-<div>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <md-card class="example-card">
+        <img md-card-image src="assets/bus.png">
+        <md-card-actions>
+          <button md-button>LIKE</button>
+          <button md-button>SHARE</button>
+        </md-card-actions>
+      </md-card>
+    </div>
+    <div class="col-md-3">
+      <md-card class="example-card">
+        <img md-card-image src="assets/bus.png">
+        <md-card-actions>
+          <button md-button>LIKE</button>
+          <button md-button>SHARE</button>
+        </md-card-actions>
+      </md-card>
+    </div>
+
+    <div class="col-md-3">
+      <md-card class="example-card">
+        <img md-card-image src="assets/bus.png">
+        <md-card-actions>
+          <button md-button>LIKE</button>
+          <button md-button>SHARE</button>
+        </md-card-actions>
+      </md-card>
+    </div>
+    <div class="col-md-3">
+      <md-card class="example-card">
+        <img md-card-image src="assets/bus.png">
+        <md-card-actions>
+          <button md-button>LIKE</button>
+          <button md-button>SHARE</button>
+        </md-card-actions>
+      </md-card>
+    </div>
+  </div>
+</div>
+
+<!--<md-card class="example-card">-->
+<!--<img md-card-image src="assets/bus.png">-->
+<!--<md-card-actions>-->
+<!--<button md-button>LIKE</button>-->
+<!--<button md-button>SHARE</button>-->
+<!--</md-card-actions>-->
+<!--</md-card>-->
+
+<!--<div class="col-md-2" style="float:right">-->
+<!--<div>-->
+<!--<h2>source:</h2>-->
+<!--<input type="text" [(ngModel)]="route.source">-->
+<!--<h2>destination:</h2>-->
+<!--<input type="text" [(ngModel)]="route.destination"><br><br>-->
+<!--<button (click)="searchBus()">search</button>-->
+<!--</div>-->
+<!--</div>-->
+<div class="container" style="margin:auto;">
   <table>
     <thead>
     <tr>

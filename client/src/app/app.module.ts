@@ -8,10 +8,16 @@ import {FormsModule} from "@angular/forms";
 import {AgmCoreModule} from "@agm/core";
 import {UserModule} from "./module/user/user.module";
 import {AdminModule} from "./module/admin/admin.module";
+import {
+  MdButtonModule, MdCheckboxModule, MdIconModule, MdMenuModule, MdSidenavModule,
+  MdToolbarModule
+} from "@angular/material";
+import {NavbarComponent} from "./navbar/navbar.component";
+import {FooterComponent} from "./navbar/footer.component";
 
 @NgModule({
   declarations: [
-    AppComponent,
+    AppComponent,NavbarComponent,FooterComponent
   ],
   imports: [
     BrowserModule,
@@ -19,9 +25,12 @@ import {AdminModule} from "./module/admin/admin.module";
     UserModule,
     AdminModule,
     HttpModule,
-    FormsModule, AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyCsbI9I3rWS_OL_gvenIAo17xHoG__sMV4'
-    })
+    FormsModule,
+    MdButtonModule, MdCheckboxModule,
+    MdMenuModule,
+    MdToolbarModule,
+    MdSidenavModule,
+    MdIconModule,
 
   ],
   bootstrap: [AppComponent]

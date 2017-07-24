@@ -14,7 +14,7 @@ import {ReservationDetailComponent} from "./module/user/component/reservation/re
 
 
 const routes: Routes = [
-    {path: '', redirectTo: 'admin', pathMatch: 'full'},
+    {path: '', redirectTo: 'user', pathMatch: 'full'},
     {
       path: 'user', component: UserComponent
     },

@@ -12,7 +12,6 @@ import {RouteService} from "../../services/route.service";
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {AppRoutingModule} from "../../app-routing.module";
-import {NgGridModule} from "angular2-grid";
 
 @NgModule({
   declarations: [
@@ -25,7 +24,7 @@ import {NgGridModule} from "angular2-grid";
     AdminComponent
   ],
   providers: [BusTypeService, BusService, RouteService],
-  imports: [CommonModule,FormsModule,AppRoutingModule, NgGridModule]
+  imports: [CommonModule,FormsModule,AppRoutingModule]
 })
 export class AdminModule {
 }

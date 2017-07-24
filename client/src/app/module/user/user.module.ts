@@ -9,6 +9,8 @@ import {ReservationDetailComponent} from "./component/reservation/reservation.de
 import {PassengerFormComponent} from "./component/passenger/passenger.form.componet";
 import {ReservationData} from "../../services/reservation.data";
 import {ReservationService} from "../../services/reservation.service";
+import {MdButtonModule, MdCardModule, MdInputModule} from "@angular/material";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   declarations: [
@@ -16,7 +18,7 @@ import {ReservationService} from "../../services/reservation.service";
     BusSearchComponent,
     BusDetailComponent, PassengerFormComponent, ReservationDetailComponent
   ],
-  imports: [CommonModule, FormsModule, RouterModule],
+  imports: [CommonModule, FormsModule, RouterModule, MdCardModule,MdInputModule,MdButtonModule,BrowserAnimationsModule],
   providers: [ReservationData,ReservationService]
 })
 export class UserModule {

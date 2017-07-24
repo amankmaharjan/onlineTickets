@@ -1,15 +1,19 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, Input, OnInit} from "@angular/core";
 import {Bus} from "../../../../model/bus";
 import {BusService} from "../../../../services/bus.service";
 import {Route} from "../../../../model/route";
+
 @Component({
   selector: 'app-bus-search',
-  templateUrl: 'bus.search.html'
+  templateUrl: 'bus.search.html',
+  styleUrls: ['bus.search.css']
 })
 
 export class BusSearchComponent implements OnInit {
   busList: Bus[];
   route: Route = new Route();
+  @Input()
+  color:"red";
 
   constructor(private busService: BusService) {
   }
