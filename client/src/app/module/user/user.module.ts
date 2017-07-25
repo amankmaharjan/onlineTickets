@@ -18,8 +18,8 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     BusSearchComponent,
     BusDetailComponent, PassengerFormComponent, ReservationDetailComponent
   ],
-  imports: [CommonModule, FormsModule, RouterModule, MdCardModule,MdInputModule,MdButtonModule,BrowserAnimationsModule],
-  providers: [ReservationData,ReservationService]
+  imports: [CommonModule, FormsModule, RouterModule, MdCardModule, MdInputModule, MdButtonModule, BrowserAnimationsModule],
+  providers: [ReservationData, ReservationService]
 })
 export class UserModule {
 }

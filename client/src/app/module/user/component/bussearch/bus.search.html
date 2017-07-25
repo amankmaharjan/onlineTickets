@@ -1,14 +1,6 @@
-<!--<md-card class="example-card">-->
-<!--<img md-card-image src="assets/bus.png">-->
-<!--<md-card-actions>-->
-<!--<button md-button>LIKE</button>-->
-<!--<button md-button>SHARE</button>-->
-<!--</md-card-actions>-->
-<!--</md-card>-->
-
-<div class="container">
+<div class="container" style="text-align: center">
   <div class="row">
-    <div style="background:url('assets/bus.png')no-repeat center; height:400px; margin:auto;">
+    <div style="background:url('assets/bus.png')no-repeat center; height:475px; margin:auto;">
       <div class="starter-template">
         <table>
           <tr>
@@ -27,47 +19,71 @@
             </td>
           </tr>
         </table>
-        <br>
       </div>
     </div>
   </div>
+  <h1><strong>Breaking New Dimensions</strong></h1>
 </div>
-<div class="container">
+<div class="container" style="height: 100px;">
   <div class="row">
-    <div class="col-md-3">
-      <md-card class="example-card">
-        <img md-card-image src="assets/bus.png">
-        <md-card-actions>
-          <button md-button>LIKE</button>
-          <button md-button>SHARE</button>
-        </md-card-actions>
-      </md-card>
+    <div class="col-md-1">
+      <!--<img src="assets/lamborghini.png" width="70px" height="70px">-->
     </div>
-    <div class="col-md-3">
-      <md-card class="example-card">
-        <img md-card-image src="assets/bus.png">
-        <md-card-actions>
-          <button md-button>LIKE</button>
-          <button md-button>SHARE</button>
-        </md-card-actions>
-      </md-card>
+    <div class="col-md-1">
+      <!--<img src="assets/lamborghini.png" width="70px" height="70px">-->
     </div>
+    <div class="col-md-1">
+      <!--<img src="assets/lamborghini.png" width="70px" height="70px">-->
+    </div>
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-1">
+      <img src="assets/bmw.png" width="70px" height="70px">
 
-    <div class="col-md-3">
-      <md-card class="example-card">
-        <img md-card-image src="assets/bus.png">
-        <md-card-actions>
-          <button md-button>LIKE</button>
-          <button md-button>SHARE</button>
-        </md-card-actions>
-      </md-card>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-1">
+      <img src="assets/lamborghini.png" width="70px" height="70px">
+    </div>
+    <div class="col-md-1">
+      <img src="assets/hyundai.png" width="70px" height="70px">
+    </div>
+    <div class="col-md-1">
+      <img src="assets/porsche.png" width="70px" height="70px">
+    </div>
+    <div class="col-md-1">
+      <!--<img src="assets/lamborghini.png" width="70px" height="70px">-->
+    </div>
+    <div class="col-md-1">
+      <!--<img src="assets/lamborghini.png" width="70px" height="70px">-->
+    </div>
+    <div class="col-md-1">
+      <!--<img src="assets/lamborghini.png" width="70px" height="70px">-->
+    </div>
+    <div class="col-md-1">
+      <!--<img src="assets/lamborghini.png" width="70px" height="70px">-->
+    </div>
+  </div>
+</div>
+
+<div class="container" style="background-color:#edeff2">
+  <div class="row">
+    <div class="col-md-3" *ngFor="let bus of busList">
       <md-card class="example-card">
-        <img md-card-image src="assets/bus.png">
+        <md-card-header style="">
+          <!--<div md-card-avatar class="example-header-image"></div>-->
+          <md-card-title>{{bus.busNo.toUpperCase()}}</md-card-title>
+          <md-card-subtitle>{{bus.route.source}} {{bus.route.destination}}</md-card-subtitle>
+        </md-card-header>
+
+        <img md-card-image src="assets/bus_yellow.png">
+        <md-card-content>
+          <p>
+            Travel from {{bus.route.source}} to {{bus.route.destination}} with full ease ,enjoyment and fun with this
+            luxury bus
+          </p>
+        </md-card-content>
         <md-card-actions>
-          <button md-button>LIKE</button>
-          <button md-button>SHARE</button>
+          <a md-button [routerLink]="['/detail/', bus.busNo]">view details</a>
         </md-card-actions>
       </md-card>
     </div>
@@ -91,41 +107,42 @@
 <!--<button (click)="searchBus()">search</button>-->
 <!--</div>-->
 <!--</div>-->
-<div class="container" style="margin:auto;">
-  <table>
-    <thead>
-    <tr>
-      <th>bus no</th>
-      <th>name</th>
-      <th>type</th>
-      <th>services</th>
-      <th>departure-time</th>
-      <th>seats</th>
-      <th>route</th>
-      <th>fare</th>
-      <th></th>
-    </tr>
-    </thead>
-    <tbody *ngFor="let bus of busList">
-    <tr>
-      <td>{{bus.busNo}}</td>
-      <td>{{bus.busName}}</td>
-      <td>{{bus.busType.type}}</td>
-      <td>{{bus.services}}</td>
-      <td>{{bus.departureTime}}</td>
-      <td>
-        <ng-container *ngFor="let seat of bus.seatList">
-          {{seat.seatName}},
-        </ng-container>
-      </td>
-      <td>{{bus.route.source}}-{{bus.route.destination}}</td>
-      <td></td>
-      <td>
-        <a [routerLink]="['/detail/', bus.busNo]">view details</a>
-      </td>
-    <tr>
-    </tbody>
-  </table>
-</div>
+
+<!--<div class="container" style="margin:auto;">-->
+<!--<table>-->
+<!--<thead>-->
+<!--<tr>-->
+<!--<th>bus no</th>-->
+<!--<th>name</th>-->
+<!--<th>type</th>-->
+<!--<th>services</th>-->
+<!--<th>departure-time</th>-->
+<!--<th>seats</th>-->
+<!--<th>route</th>-->
+<!--<th>fare</th>-->
+<!--<th></th>-->
+<!--</tr>-->
+<!--</thead>-->
+<!--<tbody *ngFor="let bus of busList">-->
+<!--<tr>-->
+<!--<td>{{bus.busNo}}</td>-->
+<!--<td>{{bus.busName}}</td>-->
+<!--<td>{{bus.busType.type}}</td>-->
+<!--<td>{{bus.services}}</td>-->
+<!--<td>{{bus.departureTime}}</td>-->
+<!--<td>-->
+<!--<ng-container *ngFor="let seat of bus.seatList">-->
+<!--{{seat.seatName}},-->
+<!--</ng-container>-->
+<!--</td>-->
+<!--<td>{{bus.route.source}}-{{bus.route.destination}}</td>-->
+<!--<td></td>-->
+<!--<td>-->
+<!--<a [routerLink]="['/detail/', bus.busNo]">view details</a>-->
+<!--</td>-->
+<!--<tr>-->
+<!--</tbody>-->
+<!--</table>-->
+<!--</div>-->
 
 
