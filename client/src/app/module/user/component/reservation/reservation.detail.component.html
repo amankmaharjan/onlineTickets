@@ -1,32 +1,166 @@
-Rservation Details:
-<div *ngIf="reservation">
-  <label>date:</label><br>
-  <label>ticketId:{{reservation.tickedId}}</label><br>
-  <label>bus no:{{reservation.bus.busNo}}</label><br>
-  <label>services:{{reservation.bus.services}}</label><br>
-  <label>bus name:{{reservation.bus.busName}}</label><br>
-  <label>bus type:{{reservation.bus.busType.type}}</label><br>
-  <label>departure time:{{reservation.bus.departureTime}}</label><br>
-  <label>boarding point:{{reservation.passenger.boardingPoint}}</label><br>
-  <label>seats:
-    <ng-container *ngFor="let seat of reservation.seatList">{{seat.seatName}}</ng-container>
-  </label>
-  <label>source:{{reservation.bus.route.source}}</label><br>
-  <label>destination:{{reservation.bus.route.destination}}</label><br>
-  <label>fare:{{reservation.fare}}</label><br>
-  <label>status:</label><br>
-  <label>Passenger-Details:</label><br>
-  <label>id:{{reservation.passenger.passengerId}}</label><br>
-  <label>name:{{reservation.passenger.name}}</label><br>
-  <label>sex:{{reservation.passenger.gender}}</label><br>
-  <label>address:{{reservation.passenger.address}}</label><br>
-  <label>mobile:{{reservation.passenger.mobileNo}}</label><br>
-  <label>email:{{reservation.passenger.email}}</label><br>
+<div>
+  <md-card class="example-card">
+    <md-card-header>
+      <md-card-title>Reservation Details:</md-card-title>
+    </md-card-header>
+    <md-card-content style="text-align: left">
+      <table>
+        <tbody>
+        <tr>
+          <td><label>date:</label></td>
+          <td></td>
+        </tr>
+        <tr>
+          <td><label>ticketId:</label></td>
+          <td>{{reservation.tickedId}}</td>
+        </tr>
+        <tr>
+          <td><label>bus no:</label>
+          </td>
+          <td>
+            {{reservation.bus.busNo}}
+          </td>
+        </tr>
+        <tr>
+          <td><label>services:</label>
+          </td>
+          <td>
+            {{reservation.bus.services}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>bus name:</label>
 
-  <button>print</button>
-  <button>send sms</button>
-  <button>email</button>
-  <button>all</button>
+          </td>
+          <td>
+            {{reservation.bus.busName}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>bus type:</label><br>
+          </td>
+          <td>
+            {{reservation.bus.busType.type}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>departure time:</label>
+
+          </td>
+          <td>
+            {{reservation.bus.departureTime}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>boarding point:</label><br>
+          </td>
+          <td>
+            {{reservation.passenger.boardingPoint}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>seats:
+            </label>
+          </td>
+          <td>
+            <ng-container *ngFor="let seat of reservation.seatList">{{seat.seatName}}</ng-container>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>source:</label><br>
+          </td>
+          <td>
+            {{reservation.bus.route.source}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>destination:</label><br>
+          </td>
+          <td>{{reservation.bus.route.destination}}</td>
+        </tr>
+        <tr>
+          <td>
+            <label>fare:</label>
+          </td>
+          <td>{{reservation.fare}}</td>
+        </tr>
+        <tr>
+          <td>status:</td>
+          <td></td>
+        </tr>
+        <tr></tr>
+        </tbody>
+      </table>
+      <table>
+        <label>Passenger-Details:</label><br>
+        <tbody>
+        <tr>
+          <td>
+            <label>id:</label><br>
+          </td>
+          <td>
+            {{reservation.passenger.passengerId}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>name:</label><br>
+          </td>
+          <td>
+            {{reservation.passenger.name}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>sex:</label><br>
+          </td>
+          <td>
+            {{reservation.passenger.gender}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>address:</label><br>
+          </td>
+          <td>
+            {{reservation.passenger.address}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>mobile:</label><br>
+
+          </td>
+          <td>
+            {{reservation.passenger.mobileNo}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <label>email:</label><br>
+          </td>
+          <td>
+            {{reservation.passenger.email}}
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </md-card-content>
+    <md-card-actions>
+      <button md-button>print</button>
+      <button md-button>send sms</button>
+      <button md-button>email</button>
+      <button md-button>all</button>
+    </md-card-actions>
+  </md-card>
+
 
 </div>
 

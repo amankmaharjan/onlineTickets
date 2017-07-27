@@ -1,106 +1,103 @@
 <div *ngIf="bus">
-  <table>
-    <tbody>
-    <tr>
-      <td>
-        busno:
-      </td>
-      <td>{{bus.busNo}}</td>
-    </tr>
-    <tr>
-      <td>
-        name:
-      </td>
-      <td>
-        {{bus.busName}}
-      </td>
-    </tr>
-    <tr>
-      <td>
-        type:
-      </td>
-      <td>
-        {{bus.busType.type}}
-      </td>
-    </tr>
-    <tr>
-      <td>services</td>
-      <td>{{bus.services}}</td>
-    </tr>
-    <tr>
-      <td>departure time</td>
-      <td>{{bus.departureTime}}</td>
-    </tr>
-    <tr>
-      <td>route</td>
-      <td>{{bus.route.source}}-{{bus.route.destination}}</td>
-    </tr>
-    </tbody>
-  </table>
+  <md-card class="example-card">
+    <md-card-header>
+      <md-card-title-group>
+        <md-card-title>{{bus.busNo.toUpperCase()}}</md-card-title>
+        <md-card-subtitle>{{bus.route.source}}-{{bus.route.destination}}</md-card-subtitle>
+        <md-card-subtitle>{{bus.busType.type}}</md-card-subtitle>
+        <md-card-subtitle>{{bus.departureTime}}</md-card-subtitle>
+        <md-card-subtitle>{{bus.services}}</md-card-subtitle>
 
-  Available seats:
-  <table class="seat">
-    <thead></thead>
-    <tbody>
-    <tr *ngFor="let a of seatsArray; let x = index">
-      <td *ngFor="let b of a;let y = index">
-        <h6><a>
-          <div class="sterring-box" *ngIf="x===0&&y===0" (click)="open()">
-            <img src="assets/steering.png"/>
-          </div>
-          <div *ngFor="let seat of bus.seatList"
-               [class.reservedSeat]="seat.status"
-               [class.selectedSeat]="seat.selected" (click)="selectSeat(seat)"
-               [class.availableSeat]="!seat.status && !seat.selected">
-            <ng-container *ngIf="seat.seatMapValueX==x && seat.seatMapValueY==y">
-              {{seat.seatName}}<img src="assets/seat.png"/>
-            </ng-container>
-            <!--{{seat.seatMapValueX+""+seat.seatMapValueY}}-->
-          </div>
-        </a>
-        </h6>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+
+      </md-card-title-group>
+    </md-card-header>
+
+    <img md-card-image src="assets/bus_yellow.png" style="  height: 150px;px; width:230px;">
+    <md-card-content>
+      <p>
+        Travel from {{bus.route.source}} to {{bus.route.destination}} with full ease, enjoyment and fun with this
+        luxury bus
+      </p>
+    </md-card-content>
+    <div class="row">
+      <div class="col-md-2">
+        <div>
+          Seats Index:
+          <table>
+            <tbody>
+            <tr>
+              <td>selected seat:</td>
+              <td class="selectedSeat"><img src="assets/seat.png"/></td>
+            </tr>
+            <tr>
+              <td>booked seat:</td>
+              <td class="reservedSeat"><img src="assets/seat.png"/></td>
+            </tr>
+            <tr>
+              <td>available seat:</td>
+              <td class="availableSeat"><img src="assets/seat.png"/></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col-md-2">
+
+      </div>
+      <div class="col-md-6">
+        Available seats:
+        <table class="seat">
+          <thead></thead>
+          <tbody>
+          <tr *ngFor="let a of seatsArray; let x = index">
+            <td *ngFor="let b of a;let y = index">
+              <h6><a>
+                <div class="sterring-box" *ngIf="x===0&&y===0" (click)="open()">
+                  <img src="assets/steering.png"/>
+                </div>
+                <div *ngFor="let seat of bus.seatList"
+                     [class.reservedSeat]="seat.status"
+                     [class.selectedSeat]="seat.selected" (click)="selectSeat(seat)"
+                     [class.availableSeat]="!seat.status && !seat.selected">
+                  <ng-container *ngIf="seat.seatMapValueX==x && seat.seatMapValueY==y">
+                    {{seat.seatName}}<img src="assets/seat.png"/>
+                  </ng-container>
+                  <!--{{seat.seatMapValueX+""+seat.seatMapValueY}}-->
+                </div>
+              </a>
+              </h6>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+        <md-card-actions>
+        </md-card-actions>
+      </div>
+      <div class="col-md-2">
+        <label>Fare:</label>
+        <table>
+          <tbody>
+          <tr>
+            <td>Seat(s):
+            </td>
+            <td>
+              <ng-container *ngFor="let seat of selectedSeatList">
+                {{seat.seatName}},
+              </ng-container>
+            </td>
+          </tr>
+          <tr>
+            <td>Amount:</td>
+            <td>Rs:{{selectedSeatList.length*500}}</td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <md-card-actions>
+      <button md-button>Back</button>
+      <a md-button (click)="continueBook()">continue booking</a>
+    </md-card-actions>
+  </md-card>
 </div>
-<div>
-  Seats Index:
-  <table>
-    <tbody>
-    <tr>
-      <td>selected seat:</td>
-      <td class="selectedSeat"><img src="assets/seat.png"/></td>
-    </tr>
-    <tr>
-      <td>booked seat:</td>
-      <td class="reservedSeat"><img src="assets/seat.png"/></td>
-    </tr>
-    <tr>
-      <td>available seat:</td>
-      <td class="availableSeat"><img src="assets/seat.png"/></td>
-    </tr>
-    </tbody>
-  </table>
-</div>
-<div>
-  <label>Fare:</label>
-  <table>
-    <tbody>
-    <tr>
-      <td>Seat(s):
-      </td>
-      <td>
-        <ng-container *ngFor="let seat of selectedSeatList">
-          {{seat.seatName}},
-        </ng-container>
-      </td>
-    </tr>
-    <tr>
-      <td>Amount:</td>
-      <td>Rs:{{selectedSeatList.length*500}}</td>
-    </tr>
-    </tbody>
-  </table>
-  <button (click)="continueBook()">Continue Booking</button>
-</div>
+

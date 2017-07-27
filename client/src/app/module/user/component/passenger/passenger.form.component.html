@@ -1,23 +1,48 @@
-passenger details:
 <div *ngIf="passenger">
-  <label>name:</label>
-  <input type="text" [(ngModel)]="passenger.name"><br>
-  <label>address:</label>
-  <input type="text" [(ngModel)]="passenger.address"><br>
-  <label>mobile:</label>
-  <input type="number" [(ngModel)]="passenger.mobileNo"><br>
-  <label>email:</label>
-  <input type="email" [(ngModel)]="passenger.email"><br>
-  sex:
-  <!--<input type="radio" name="sex" [(ngModel)]="passenger.gender">M-->
-  <!--<input type="radio" name="sex" [(ngModel)]="passenger.gender">F-->
-  <br>
-  <label>boarding point:</label>
-  <select [(ngModel)]="passenger.boardingPoint">
-    <option>kathmandu</option>
-    <option>pokhara</option>
-    <option>bhaktapur</option>
-  </select>
-  <br>
-  <button (click)=" book()">Book</button>
+  <md-card class="example-card">
+    <md-card-header>
+      <md-card-title>Passenger Details:</md-card-title>
+      <md-card-subtitle></md-card-subtitle>
+    </md-card-header>
+    <!--<img md-card-image src="assets/img/examples/shiba2.jpg">-->
+    <md-card-content>
+      <md-input-container>
+        <input mdInput placeholder="name" [(ngModel)]="passenger.name">
+      </md-input-container>
+      <br>
+      <md-input-container>
+        <input mdInput placeholder="address" [(ngModel)]="passenger.address">
+      </md-input-container>
+      <br>
+      <md-input-container>
+        <input mdInput placeholder="mobile no" [(ngModel)]="passenger.mobileNo">
+      </md-input-container>
+      <br>
+      <md-input-container>
+        <input mdInput placeholder="email" [(ngModel)]="passenger.email">
+      </md-input-container>
+      <br>
+      sex:
+      <md-radio-group class="example-radio-group" [(ngModel)]="passenger.gender">
+        <md-radio-button class="example-radio-button" [value]="male">
+          male
+        </md-radio-button>
+        <md-radio-button class="example-radio-button" [value]="female">
+          female
+        </md-radio-button>
+      </md-radio-group>
+      <br>
+      <md-select placeholder="boarding point" [(ngModel)]="passenger.boardingPoint">
+        <md-option>kathmandu</md-option>
+        <md-option>pokhara</md-option>
+        <md-option>bhaktapur</md-option>
+      </md-select>
+      <br>
+    </md-card-content>
+    <md-card-actions>
+      <button md-button>Back</button>
+      <button md-button (click)=" book()">Book</button>
+      <button md-button>Cancel</button>
+    </md-card-actions>
+  </md-card>
 </div>

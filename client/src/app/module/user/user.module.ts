@@ -9,7 +9,7 @@ import {ReservationDetailComponent} from "./component/reservation/reservation.de
 import {PassengerFormComponent} from "./component/passenger/passenger.form.componet";
 import {ReservationData} from "../../services/reservation.data";
 import {ReservationService} from "../../services/reservation.service";
-import {MdButtonModule, MdCardModule, MdInputModule} from "@angular/material";
+import {MdButtonModule, MdCardModule, MdInputModule, MdRadioModule, MdSelectModule} from "@angular/material";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
@@ -18,7 +18,7 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
     BusSearchComponent,
     BusDetailComponent, PassengerFormComponent, ReservationDetailComponent
   ],
-  imports: [CommonModule, FormsModule, RouterModule, MdCardModule, MdInputModule, MdButtonModule, BrowserAnimationsModule],
+  imports: [CommonModule, FormsModule, RouterModule, MdCardModule, MdInputModule, MdButtonModule, BrowserAnimationsModule,MdRadioModule,MdSelectModule],
   providers: [ReservationData, ReservationService]
 })
 export class UserModule {

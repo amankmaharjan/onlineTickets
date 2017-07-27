@@ -4,7 +4,7 @@ tr, td, th
   padding-right: 20px;
 }
 table {
-  margin:250px auto; /* or margin: 0 auto 0 auto */
+  margin:200px auto; /* or margin: 0 auto 0 auto */
 }
 
 md-input-container:not(.md-input-invalid).md-input-focused .md-input {

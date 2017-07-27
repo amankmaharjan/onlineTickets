@@ -27,6 +27,7 @@
     "angular2-csv": "^0.2.3",
     "angular2-grid": "^2.0.6",
     "core-js": "^2.4.1",
+    "coreui.io": "^1.0.0-alpha.6",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.4"
   },
