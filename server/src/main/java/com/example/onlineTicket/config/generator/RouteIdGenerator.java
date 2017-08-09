@@ -13,13 +13,13 @@ public class RouteIdGenerator implements IdentifierGenerator {
     public Serializable generate(SessionImplementor session, Object object)
             throws HibernateException {
 
-        String prefix = "Route";
+        String prefix = "route";
         Connection connection = session.connection();
 
         try {
             Statement statement = connection.createStatement();
 
-            ResultSet rs = statement.executeQuery("select count(route_id) as Id from onlineTicket.route");
+            ResultSet rs = statement.executeQuery("select count(id) as Id from onlineTicket.route");
 
             if (rs.next()) {
                 int id = rs.getInt(1) + 101;

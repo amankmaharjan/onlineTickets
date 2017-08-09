@@ -1,12 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
 @import '~@angular/material/prebuilt-themes/purple-green.css';
-table {
-  border-collapse: collapse;
-}
-
-td, th {
-  border: 1px solid black;
-}
 /* You can add global styles to this file, and also import other style files */
 body {
   margin: 0;
@@ -33,6 +26,7 @@ md-toolbar-row {
 body {
   padding-top: 50px;
 }
+
 .starter-template {
   padding: 40px 15px;
   text-align: center;

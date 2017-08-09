@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
  * Created by aman on 7/9/17.
  */
 @RestController
-public class BusController {
+public class  BusController {
     @Autowired
     BusService busService;
 

@@ -1,6 +1,5 @@
 package com.example.onlineTicket.config.generator;
 
-import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SessionImplementor;
 import org.hibernate.id.IdentifierGenerator;
 
@@ -10,21 +9,21 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
- * Created by aman on 7/9/17.
- */
-public class TimeIdGenerator  implements IdentifierGenerator{
+public class ServiceIdGenerator implements IdentifierGenerator {
+
     @Override
     public Serializable generate(SessionImplementor session, Object object)
-            throws HibernateException {
 
-        String prefix = "time";
+    {
+        String prefix = "service";
         Connection connection = session.connection();
 
-        try {
+        try
+
+        {
             Statement statement = connection.createStatement();
 
-            ResultSet rs = statement.executeQuery("select count(time_id) as Id from onlineTicket.bus_time");
+            ResultSet rs = statement.executeQuery("select count(id) as Id from onlineTicket.service");
 
             if (rs.next()) {
                 int id = rs.getInt(1) + 101;
@@ -32,11 +31,13 @@ public class TimeIdGenerator  implements IdentifierGenerator{
                 System.out.println("Generated Id: " + generatedId);
                 return generatedId;
             }
-        } catch (SQLException e) {
+        } catch (
+                SQLException e)
+
+        {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return null;
     }
-
 }

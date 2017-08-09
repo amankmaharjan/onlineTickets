@@ -26,7 +26,7 @@ public class PassengerIdGenerator implements IdentifierGenerator {
         try {
             Statement statement = connection.createStatement();
 
-            ResultSet rs = statement.executeQuery("select count(pass_Id) as Id from onlineTicket.passenger");
+            ResultSet rs = statement.executeQuery("select count(id) as Id from onlineTicket.passenger");
 
             if (rs.next()) {
                 int id = rs.getInt(1) + 101;

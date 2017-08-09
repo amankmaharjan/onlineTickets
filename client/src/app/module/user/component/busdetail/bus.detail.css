@@ -1,28 +1,53 @@
 img {
   width: 30px;
+  height: 30px;
+}
+
+.sterring-box {
+  width: 0px;
+}
+
+table td {
+  table-layout: fixed;
+  width: 40px;
+  height: 20px;
+  word-wrap: break-word;
+  border-collapse: collapse;
+  /*border: 1px solid black;*/
+  position: relative;
+}
+
+.selectedSeat {
+  background-color: yellow;
+  color: purple;
+}
+
+.availableSeat {
+  background-color: lime;
+  color:white;
+}
+
+.reservedSeat {
+  background-color: darkcyan;
+  color: white;
+}
+
+#text:hover,#text:active{
+  color: red;
+}
+
+#text {
+  z-index: 100;
+  position: absolute;
+  left:0px;
+  top:5px;
+}
+.sterring-box{
+  width:30px;
   height:30px;
 }
-
-.sterring-box{
-  width:0px;
-}
-table td
-{
-  table-layout:fixed;
-  width:40px;
-  height: 20px;
-  word-wrap:break-word;
-}
-
-.selectedSeat{
-  background-color: yellow;
-}
-.availableSeat{
-  background-color: lime;
-}
-.reservedSeat{
-  background-color: darkcyan;
-}
-a:hover {
-  color: red;
+caption {
+  display: table-caption;
+  text-align: center;
+  color: white;
 }
