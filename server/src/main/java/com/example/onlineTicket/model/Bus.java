@@ -52,17 +52,17 @@ public class Bus implements Serializable {
 	@JoinColumns({ @JoinColumn(name="bus_typeid", referencedColumnName="id", nullable=false) })	
 	private BusType bus_type;
 	
-	@ManyToMany(targetEntity=Service.class)	
-	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@JoinTable(name="service_bus", joinColumns={ @JoinColumn(name="busno") }, inverseJoinColumns={ @JoinColumn(name="serviceid") })	
-	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set service = new java.util.HashSet();
-	
 	@ManyToMany(targetEntity=Schedule.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@JoinTable(name="schedule_bus", joinColumns={ @JoinColumn(name="busno") }, inverseJoinColumns={ @JoinColumn(name="scheduleid") })	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set schedule = new java.util.HashSet();
+	
+	@ManyToMany(targetEntity=Facility.class)	
+	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
+	@JoinTable(name="facility_bus", joinColumns={ @JoinColumn(name="busno") }, inverseJoinColumns={ @JoinColumn(name="facilityid") })	
+	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
+	private java.util.Set facility = new java.util.HashSet();
 	
 	@OneToMany(mappedBy="busno", targetEntity=Seat.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
@@ -105,21 +105,21 @@ public class Bus implements Serializable {
 		return seatColumn;
 	}
 	
-	public void setService(java.util.Set value) {
-		this.service = value;
-	}
-	
-	public java.util.Set getService() {
-		return service;
-	}
-	
-	
 	public void setSchedule(java.util.Set value) {
 		this.schedule = value;
 	}
 	
 	public java.util.Set getSchedule() {
 		return schedule;
+	}
+	
+	
+	public void setFacility(java.util.Set value) {
+		this.facility = value;
+	}
+	
+	public java.util.Set getFacility() {
+		return facility;
 	}
 	
 	
@@ -158,8 +158,8 @@ public class Bus implements Serializable {
 				sb.append("Bus_type.Persist_ID=").append(getBus_type().toString(true)).append(" ");
 			else
 				sb.append("Bus_type=null ");
-			sb.append("Service.size=").append(getService().size()).append(" ");
 			sb.append("Schedule.size=").append(getSchedule().size()).append(" ");
+			sb.append("Facility.size=").append(getFacility().size()).append(" ");
 			sb.append("Seat.size=").append(getSeat().size()).append(" ");
 			sb.append("]");
 			return sb.toString();

@@ -38,15 +38,15 @@ public class Schedule implements Serializable {
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set route = new java.util.HashSet();
 	
-	@ManyToMany(mappedBy="schedule", targetEntity=Bus.class)	
-	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
-	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
-	private java.util.Set busno = new java.util.HashSet();
-	
 	@OneToMany(mappedBy="schedule", targetEntity=Reservation.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set reservation = new java.util.HashSet();
+	
+	@ManyToMany(mappedBy="schedule", targetEntity=Bus.class)	
+	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
+	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
+	private java.util.Set busno = new java.util.HashSet();
 	
 	public void setId(String value) {
 		this.id = value;
@@ -85,21 +85,21 @@ public class Schedule implements Serializable {
 	}
 	
 	
-	public void setBusno(java.util.Set value) {
-		this.busno = value;
-	}
-	
-	public java.util.Set getBusno() {
-		return busno;
-	}
-	
-	
 	public void setReservation(java.util.Set value) {
 		this.reservation = value;
 	}
 	
 	public java.util.Set getReservation() {
 		return reservation;
+	}
+	
+	
+	public void setBusno(java.util.Set value) {
+		this.busno = value;
+	}
+	
+	public java.util.Set getBusno() {
+		return busno;
 	}
 	
 	
@@ -118,8 +118,8 @@ public class Schedule implements Serializable {
 			sb.append("Date=").append(getDate()).append(" ");
 			sb.append("DepartureTime=").append(getDepartureTime()).append(" ");
 			sb.append("Route.size=").append(getRoute().size()).append(" ");
-			sb.append("Busno.size=").append(getBusno().size()).append(" ");
 			sb.append("Reservation.size=").append(getReservation().size()).append(" ");
+			sb.append("Busno.size=").append(getBusno().size()).append(" ");
 			sb.append("]");
 			return sb.toString();
 		}

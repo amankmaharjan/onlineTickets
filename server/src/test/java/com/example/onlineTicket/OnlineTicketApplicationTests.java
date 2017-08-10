@@ -2,7 +2,7 @@ package com.example.onlineTicket;
 
 import com.example.onlineTicket.domain.*;
 import com.example.onlineTicket.repository.*;
-import com.example.onlineTicket.web.ServiceDto;
+import com.example.onlineTicket.web.FacilityDTO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,7 +25,7 @@ public class OnlineTicketApplicationTests {
     @Autowired
     SeatRepository seatRepository;
     @Autowired
-    ServiceRepository serviceRepository;
+    FacilityRepository facilityRepository;
     @Autowired
     ScheduleRepository scheduleRepository;
     @Autowired
@@ -58,11 +58,11 @@ public class OnlineTicketApplicationTests {
 
     @Test
     public void setServices() {
-        Service service = new Service();
-        service.setServiceType("ac");
-        serviceRepository.save(service);
-        ServiceDto serviceDto = new ServiceDto(serviceRepository.findOne(service.getId()));
-        System.out.println(serviceDto);
+        Facility facility = new Facility();
+        facility.setServiceType("ac");
+        facilityRepository.save(facility);
+        FacilityDTO serviceDTO = new FacilityDTO(facilityRepository.findOne(facility.getId()));
+        System.out.println(serviceDTO);
     }
 
     @Test
@@ -113,18 +113,18 @@ public class OnlineTicketApplicationTests {
         busType.setBusType("articulated");
         busTypeRepository.save(busType);
 
-        Service service = new Service();
-        service.setServiceType("ac");
-        Set<Service> serviceSet = new HashSet<>();
-        serviceSet.add(service);
-        serviceRepository.save(serviceSet);
+        Facility facility = new Facility();
+        facility.setServiceType("ac");
+        Set<Facility> facilitySet = new HashSet<>();
+        facilitySet.add(facility);
+        facilityRepository.save(facilitySet);
 
         Bus bus = new Bus();
         bus.setNo("ba123");
         bus.setSeatRow(3);
         bus.setSeatColumn(3);
         bus.setBus_type(busType);
-        bus.setService(serviceSet);
+        bus.setFacility(facilitySet);
         bus.setSchedule(scheduleSet);
         busRepository.save(bus);
 
@@ -193,18 +193,18 @@ public class OnlineTicketApplicationTests {
         busType.setBusType("articulated");
         busTypeRepository.save(busType);
 
-        Service service = new Service();
-        service.setServiceType("ac");
-        Set<Service> serviceSet = new HashSet<>();
-        serviceSet.add(service);
-        serviceRepository.save(serviceSet);
+        Facility facility = new Facility();
+        facility.setServiceType("ac");
+        Set<Facility> facilitySet = new HashSet<>();
+        facilitySet.add(facility);
+        facilityRepository.save(facilitySet);
 
         Bus bus = new Bus();
         bus.setNo("ba123");
         bus.setSeatRow(3);
         bus.setSeatColumn(3);
         bus.setBus_type(busType);
-        bus.setService(serviceSet);
+        bus.setFacility(facilitySet);
         bus.setSchedule(scheduleSet);
         busRepository.save(bus);
 
@@ -226,7 +226,7 @@ public class OnlineTicketApplicationTests {
         seatRepository.save(seatSet);
         seatRepository.delete(seatSet);
         busRepository.delete(bus);
-        serviceRepository.delete(serviceSet);
+        facilityRepository.delete(facilitySet);
         busTypeRepository.delete(busType);
         scheduleRepository.delete(scheduleSet);
         routeRepository.delete(routeSet);
@@ -290,30 +290,25 @@ public class OnlineTicketApplicationTests {
         busType.setBusType("articulated");
         busTypeRepository.save(busType);
 
-        Service service = new Service();
-        service.setServiceType("ac");
-        Set<Service> serviceSet = new HashSet<>();
-        serviceSet.add(service);
-        serviceRepository.save(serviceSet);
+        Facility facility = new Facility();
+        facility.setServiceType("ac");
+        Set<Facility> facilitySet = new HashSet<>();
+        facilitySet.add(facility);
+        facilityRepository.save(facilitySet);
 
         Bus bus = new Bus();
         bus.setNo("ba123");
         bus.setSeatRow(3);
         bus.setSeatColumn(3);
         bus.setBus_type(busType);
-        bus.setService(serviceSet);
+        bus.setFacility(facilitySet);
         bus.setSchedule(scheduleSet);
         busRepository.save(bus);
 //        busRepository.delete(bus);
-//        serviceRepository.delete(serviceSet);
+//        serviceRepository.delete(facilitySet);
 //        busTypeRepository.delete(busType);
 //        scheduleRepository.delete(scheduleSet);
 //        routeRepository.delete(routeSet);
-    }
-
-
-    @Test
-    public void checkReser() {
     }
 
 }

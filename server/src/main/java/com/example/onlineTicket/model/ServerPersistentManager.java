@@ -37,12 +37,12 @@ public class ServerPersistentManager extends PersistentManager {
 		configuration.addAnnotatedClass(BusType.class);
 		configuration.addAnnotatedClass(Reservation.class);
 		configuration.addAnnotatedClass(Passenger.class);
-		configuration.addAnnotatedClass(Service.class);
 		configuration.addAnnotatedClass(Route.class);
 		configuration.addAnnotatedClass(BoardingPoint.class);
-		configuration.addAnnotatedClass(Bus.class);
 		configuration.addAnnotatedClass(Seat.class);
 		configuration.addAnnotatedClass(Schedule.class);
+		configuration.addAnnotatedClass(Bus.class);
+		configuration.addAnnotatedClass(Facility.class);
 		configuration.buildMappings();
 		return configuration;
 	}

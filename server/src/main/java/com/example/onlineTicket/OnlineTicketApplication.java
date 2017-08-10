@@ -9,16 +9,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 @SpringBootApplication
 public class OnlineTicketApplication {
-//    @Bean
-//    public WebMvcConfigurer corsConfigurer() {
-//        return new WebMvcConfigurerAdapter() {
-//            @Override
-//            public void addCorsMappings(CorsRegistry registry) {
-//                registry.addMapping("/*").allowedOrigins("*").exposedHeaders("Access-Control-Allow-Origin");
-//
-//            }
-//        };
-//    }
 
     public static void main(String[] args) {
         SpringApplication.run(OnlineTicketApplication.class, args);

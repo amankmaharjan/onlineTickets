@@ -352,7 +352,7 @@
       <UserTypes/>
     </Column>
   </Entity>
-  <Entity name="service" Unlogged="false" PKClustered="0">
+  <Entity name="facility" Unlogged="false" PKClustered="0">
     <Column name="id">
       <PrimaryKey>true</PrimaryKey>
       <ForeignKey>false</ForeignKey>
@@ -371,32 +371,6 @@
       <Length>255</Length>
       <Nullable>true</Nullable>
       <IDGenerator>native</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-  </Entity>
-  <Entity name="service_bus" Unlogged="false" PKClustered="0">
-    <Column name="serviceid">
-      <PrimaryKey>true</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>service.id</ReferencedColumn>
-      <Type>9</Type>
-      <Length>11</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>assigned</IDGenerator>
-      <Unique>false</Unique>
-      <Index>false</Index>
-      <UserTypes/>
-    </Column>
-    <Column name="busno">
-      <PrimaryKey>true</PrimaryKey>
-      <ForeignKey>true</ForeignKey>
-      <ReferencedColumn>bus.no</ReferencedColumn>
-      <Type>27</Type>
-      <Length>255</Length>
-      <Nullable>false</Nullable>
-      <IDGenerator>assigned</IDGenerator>
       <Unique>false</Unique>
       <Index>false</Index>
       <UserTypes/>
@@ -504,6 +478,32 @@
       <UserTypes/>
     </Column>
   </Entity>
+  <Entity name="facility_bus" Unlogged="false" PKClustered="0">
+    <Column name="facilityid">
+      <PrimaryKey>true</PrimaryKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>facility.id</ReferencedColumn>
+      <Type>9</Type>
+      <Length>11</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>assigned</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+    <Column name="busno">
+      <PrimaryKey>true</PrimaryKey>
+      <ForeignKey>true</ForeignKey>
+      <ReferencedColumn>bus.no</ReferencedColumn>
+      <Type>27</Type>
+      <Length>255</Length>
+      <Nullable>false</Nullable>
+      <IDGenerator>assigned</IDGenerator>
+      <Unique>false</Unique>
+      <Index>false</Index>
+      <UserTypes/>
+    </Column>
+  </Entity>
   <ForeignKey name="FKreservatio82097">
     <ReferenceTable>reservation</ReferenceTable>
     <ReferencedTable>seat</ReferencedTable>
@@ -556,26 +556,6 @@
   </ForeignKey>
   <ForeignKey name="FKseat732328">
     <ReferenceTable>seat</ReferenceTable>
-    <ReferencedTable>bus</ReferencedTable>
-    <Columns>
-      <Column>busno</Column>
-    </Columns>
-    <RefColumns>
-      <Column>no</Column>
-    </RefColumns>
-  </ForeignKey>
-  <ForeignKey name="FKservice_bu92596">
-    <ReferenceTable>service_bus</ReferenceTable>
-    <ReferencedTable>service</ReferencedTable>
-    <Columns>
-      <Column>serviceid</Column>
-    </Columns>
-    <RefColumns>
-      <Column>id</Column>
-    </RefColumns>
-  </ForeignKey>
-  <ForeignKey name="FKservice_bu860273">
-    <ReferenceTable>service_bus</ReferenceTable>
     <ReferencedTable>bus</ReferencedTable>
     <Columns>
       <Column>busno</Column>
@@ -652,6 +632,26 @@
     </Columns>
     <RefColumns>
       <Column>id</Column>
+    </RefColumns>
+  </ForeignKey>
+  <ForeignKey name="FKfacility_b824096">
+    <ReferenceTable>facility_bus</ReferenceTable>
+    <ReferencedTable>facility</ReferencedTable>
+    <Columns>
+      <Column>facilityid</Column>
+    </Columns>
+    <RefColumns>
+      <Column>id</Column>
+    </RefColumns>
+  </ForeignKey>
+  <ForeignKey name="FKfacility_b210679">
+    <ReferenceTable>facility_bus</ReferenceTable>
+    <ReferencedTable>bus</ReferencedTable>
+    <Columns>
+      <Column>busno</Column>
+    </Columns>
+    <RefColumns>
+      <Column>no</Column>
     </RefColumns>
   </ForeignKey>
 </Model>

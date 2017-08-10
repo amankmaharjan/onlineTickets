@@ -15,21 +15,21 @@ import java.io.Serializable;
 import javax.persistence.*;
 @Entity
 @org.hibernate.annotations.Proxy(lazy=false)
-@Table(name="service")
-public class Service implements Serializable {
-	public Service() {
+@Table(name="facility")
+public class Facility implements Serializable {
+	public Facility() {
 	}
 	
 	@Column(name="id", nullable=false, unique=true, length=11)	
 	@Id	
-	@GeneratedValue(generator="SERVICE_ID_GENERATOR")	
-	@org.hibernate.annotations.GenericGenerator(name="SERVICE_ID_GENERATOR", strategy="identity")
+	@GeneratedValue(generator="FACILITY_ID_GENERATOR")	
+	@org.hibernate.annotations.GenericGenerator(name="FACILITY_ID_GENERATOR", strategy="identity")	
 	private int id;
 	
 	@Column(name="service_type", nullable=true, length=255)	
 	private String serviceType;
 	
-	@ManyToMany(mappedBy="service", targetEntity=Bus.class)	
+	@ManyToMany(mappedBy="facility", targetEntity=Bus.class)	
 	@org.hibernate.annotations.Cascade({org.hibernate.annotations.CascadeType.SAVE_UPDATE, org.hibernate.annotations.CascadeType.LOCK})	
 	@org.hibernate.annotations.LazyCollection(org.hibernate.annotations.LazyCollectionOption.TRUE)	
 	private java.util.Set busno = new java.util.HashSet();
@@ -73,7 +73,7 @@ public class Service implements Serializable {
 		}
 		else {
 			StringBuffer sb = new StringBuffer();
-			sb.append("Service[ ");
+			sb.append("Facility[ ");
 			sb.append("Id=").append(getId()).append(" ");
 			sb.append("ServiceType=").append(getServiceType()).append(" ");
 			sb.append("Busno.size=").append(getBusno().size()).append(" ");
