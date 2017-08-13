@@ -2,6 +2,8 @@ package com.example.onlineTicket.web.rest;
 
 import com.example.onlineTicket.domain.Route;
 import com.example.onlineTicket.service.RouteService;
+import com.example.onlineTicket.web.dto.RouteDT0;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,9 +16,12 @@ import org.springframework.web.bind.annotation.*;
 public class RouteController {
     @Autowired
     RouteService routeService;
+    @Autowired
+    ModelMapper modelMapper;
 
     @PostMapping(path = "/route/")
-    public ResponseEntity<?> insert(@RequestBody Route route) {
+    public ResponseEntity<?> insert(@RequestBody RouteDT0 routeDT0) {
+        Route route = convertToRoute(routeDT0);
         routeService.insert(route);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -38,4 +43,8 @@ public class RouteController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
 
+    private Route convertToRoute(RouteDT0 routeDT0) {
+        Route route = modelMapper.map(routeDT0, Route.class);
+        return route;
+    }
 }

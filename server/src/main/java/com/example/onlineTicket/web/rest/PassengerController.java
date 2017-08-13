@@ -2,6 +2,8 @@ package com.example.onlineTicket.web.rest;
 
 import com.example.onlineTicket.domain.Passenger;
 import com.example.onlineTicket.service.PassengerService;
+import com.example.onlineTicket.web.dto.PassengerDTO;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,9 +19,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class PassengerController {
     @Autowired
     PassengerService passengerService;
+    @Autowired
+    private ModelMapper modelMapper;
 
     @PostMapping(path = "/passenger/")
-    public ResponseEntity<?> insert(@RequestBody Passenger passenger) {
+    public ResponseEntity<?> insert(@RequestBody PassengerDTO passengerDTO) {
+        Passenger passenger = convertToPassenger(passengerDTO);
         passengerService.insert(passenger);
         return new ResponseEntity<>(HttpStatus.CREATED);
     }
@@ -29,4 +34,8 @@ public class PassengerController {
         return new ResponseEntity<>(passengerService.findAll(), HttpStatus.OK);
     }
 
+    private Passenger convertToPassenger(PassengerDTO passengerDTO) {
+        Passenger passenger = modelMapper.map(passengerDTO, Passenger.class);
+        return passenger;
+    }
 }

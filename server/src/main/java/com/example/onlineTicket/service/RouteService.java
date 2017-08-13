@@ -20,8 +20,16 @@ public class RouteService {
     @Autowired
     RouteRepository routeRepository;
 
-    public void insert(Route route) {
-        routeRepository.save(route);
+    public Route insert(Route route) {
+        return routeRepository.save(route);
+    }
+
+    public Route update(String routeid, Route route) {
+        Route updatedRoute = findOne(routeid);
+        if (updatedRoute != null) {
+            return routeRepository.save(updatedRoute);
+        }
+        return null;
     }
 
     public List<Route> findAll() {
@@ -36,13 +44,6 @@ public class RouteService {
         }
     }
 
-    public void update(String routeid, Route route) {
-        Route updatedRoute = findOne(routeid);
-        if (updatedRoute != null) {
-            routeRepository.save(updatedRoute);
-        }
-
-    }
 
     public Route findOne(String routeId) {
         return routeRepository.findOne(routeId);

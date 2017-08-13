@@ -1,7 +1,7 @@
 package com.example.onlineTicket.service;
 
 import com.example.onlineTicket.domain.Facility;
-import com.example.onlineTicket.web.FacilityDTO;
+import com.example.onlineTicket.web.dto.FacilityDTO;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
@@ -17,14 +17,14 @@ import org.springframework.test.context.junit4.SpringRunner;
 public class BusServiceFacilityTest {
     @Autowired
     private FacilityService facilityService;
-    private FacilityDTO serviceDTO;
+    private FacilityDTO facilityDTO;
     private Facility facility;
 
     @Before
     public void setUp() throws Exception {
         facility = new Facility();
         facility.setServiceType("ac");
-        serviceDTO = new FacilityDTO(facility);
+        facilityDTO = new FacilityDTO(facility);
     }
 
     @After
@@ -33,7 +33,7 @@ public class BusServiceFacilityTest {
 
     @Test
     public void insert() throws Exception {
-        Assert.assertNotNull(facilityService.insert(serviceDTO));
+        Assert.assertNotNull(facilityService.insert(facility));
     }
 
     @Test
@@ -47,7 +47,7 @@ public class BusServiceFacilityTest {
 
     @Test
     public void findAll() throws Exception {
-        Assert.assertNotNull(facilityService.FindAll());
+        Assert.assertNotNull(facilityService.findAll());
     }
 
     @Test

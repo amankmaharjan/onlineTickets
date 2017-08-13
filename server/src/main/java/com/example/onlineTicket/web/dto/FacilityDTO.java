@@ -1,11 +1,13 @@
-package com.example.onlineTicket.web;
+package com.example.onlineTicket.web.dto;
 
 import com.example.onlineTicket.domain.Facility;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.ToString;
 
 @ToString
+@NoArgsConstructor
 public class FacilityDTO {
     @Getter
     @Setter
@@ -18,5 +20,4 @@ public class FacilityDTO {
         this.id = facility.getId();
         this.serviceType = facility.getServiceType();
     }
-
 }

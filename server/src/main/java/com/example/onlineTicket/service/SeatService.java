@@ -17,13 +17,11 @@ public class SeatService {
     @Autowired
     SeatRepository seatRepository;
 
-    public void insert(Seat seat) {
-        seatRepository.save(seat);
+    public Seat insert(Seat seat) {
+        return seatRepository.save(seat);
     }
 
     public List<Seat> findAll() {
         return seatRepository.findAll();
     }
-
-
 }

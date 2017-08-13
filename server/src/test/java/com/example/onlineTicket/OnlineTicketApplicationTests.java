@@ -2,7 +2,7 @@ package com.example.onlineTicket;
 
 import com.example.onlineTicket.domain.*;
 import com.example.onlineTicket.repository.*;
-import com.example.onlineTicket.web.FacilityDTO;
+import com.example.onlineTicket.web.dto.FacilityDTO;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

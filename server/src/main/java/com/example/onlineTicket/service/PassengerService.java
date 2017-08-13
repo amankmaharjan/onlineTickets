@@ -17,12 +17,39 @@ public class PassengerService {
     @Autowired
     PassengerRepository passengerRepository;
 
-    public void insert(Passenger passenger) {
-        passengerRepository.save(passenger);
+
+    public Passenger insert(Passenger passenger) {
+        return passengerRepository.save(passenger);
+    }
+
+    public Passenger update(String id, Passenger updatedPassenger) {
+        Passenger passenger = findOne(id);
+        if (passenger != null) {
+            passenger.setName(updatedPassenger.getName());
+            passenger.setMobileNo(updatedPassenger.getMobileNo());
+            passenger.setAddress(updatedPassenger.getAddress());
+            passenger.setGender(updatedPassenger.getGender());
+            passenger.setEmail(updatedPassenger.getEmail());
+            passenger.setBoarding_point(updatedPassenger.getBoarding_point());
+            return passengerRepository.save(passenger);
+        }
+        return null;
+    }
+
+    public void delete(String id) {
+        Passenger passenger = findOne(id);
+        if (passenger != null) {
+            passengerRepository.delete(id);
+        }
+    }
+
+    public Passenger findOne(String id) {
+        return passengerRepository.findOne(id);
     }
 
     public List<Passenger> findAll() {
         return passengerRepository.findAll();
     }
+
 
 }

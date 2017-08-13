@@ -2,23 +2,29 @@ package com.example.onlineTicket.service;
 
 import com.example.onlineTicket.domain.Facility;
 import com.example.onlineTicket.repository.FacilityRepository;
-import com.example.onlineTicket.web.FacilityDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Transactional
 @Service
+@Transactional
 public class FacilityService {
     @Autowired
     FacilityRepository facilityRepository;
 
-    public Facility insert(FacilityDTO serviceDTO) {
-        Facility facility = new Facility();
-        facility.setServiceType(serviceDTO.getServiceType());
+    public Facility insert(Facility facility) {
         return facilityRepository.save(facility);
+    }
+
+    public Facility update(Facility updatedFacility) {
+        Facility facility = findOneService(updatedFacility.getId());
+        if (facility != null) {
+            facility.setServiceType(updatedFacility.getServiceType());
+            return facilityRepository.save(facility);
+        }
+        return null;
     }
 
     public void delete(Integer id) {
@@ -32,7 +38,7 @@ public class FacilityService {
         return facilityRepository.findOne(id);
     }
 
-    public List<Facility> FindAll() {
+    public List<Facility> findAll() {
         return facilityRepository.findAll();
     }
 
@@ -40,12 +46,5 @@ public class FacilityService {
         return facilityRepository.findByServiceType(serviceType);
     }
 
-    public void update(FacilityDTO facilityDTO) {
-        Facility facility = findOneService(facilityDTO.getId());
-        if (facility != null) {
-            facility.setServiceType(facilityDTO.getServiceType());
-            facilityRepository.save(facility);
-        }
-    }
 
 }
